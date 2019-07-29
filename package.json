@@ -1,0 +1,8 @@
+{
+  "name": "projeto-backend",
+  "version": "1.0.0",
+  "description": "Projeto Final de Conclusão de Curso do IFSP",
+  "main": "index.js",
+  "author": "Willian Amaral <willian.amaral@outlook.com.br>",
+  "license": "MIT"
+}
