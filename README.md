@@ -6,12 +6,14 @@ de Sistemas do IFSP Campos do Jordão.
 
 Este projeto utilizou diversas tecnlogias opensource, incluindo:
 
-- Node.js
+- NodeJs
+- NextJs
+- GraphQL
 - Yarn
 - MongoDB
 - Express
 - Bulma
-- Passport.js
+- PassportJs
 - Nodemailer
-- React.js
+- ReactJs
 - React Native

@@ -4,5 +4,17 @@
   "description": "Projeto Final de Conclusão de Curso do IFSP",
   "main": "index.js",
   "author": "Willian Amaral <willian.amaral@outlook.com.br>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.8.2",
+    "graphql": "^14.4.2",
+    "graphql-import": "^0.7.1",
+    "mongoose": "^5.6.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }
