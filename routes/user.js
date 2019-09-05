@@ -7,7 +7,7 @@
 // Também importamos a função de validação de cpf, separada para clareza do código. 
 const router = require('express').Router();
 const secureRouter = require('express').Router();
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 const user = require('../controllers/user');
 const cpfValidate = require('./cpfValidate');
 // Essa é a função responsável pela validação dos dados e envio da resposta de erro.
