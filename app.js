@@ -25,5 +25,5 @@ app.use('/', user.router);
 app.use('/user', passport.authenticate('jwt', { session: false }), user.secureRouter);
 // Inicializar o servidor. 
 app.listen(4000, ()=> {
-  console.log('🚀 Servidor online em http://localhost:3000');
+  console.log('🚀 Servidor online em http://localhost:4000');
 });
