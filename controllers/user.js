@@ -39,7 +39,6 @@ exports.create = function (req, res, next) {
 // pelo cliente. 
 exports.login = async function (req, res, next) {
     passport.authenticate('login', async function (error, user, info) {
-        console.log(user, info, error);
         try {
             if (info.error) {
                 return res.status(401).send(info);
@@ -53,6 +52,7 @@ exports.login = async function (req, res, next) {
                 const body = { _id: user._id, email: user.email };
                 const token = jwt.sign({ user: body }, 'secret');
                 const message = info.message;
+                console.log({ message, token });
                 return res.json({ message, token });
             });
         } catch (error) {

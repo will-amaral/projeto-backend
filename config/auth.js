@@ -54,7 +54,7 @@ passport.use('login', new localStrategy({
         if (!validate) {
             return done(null, false, { error: 401, message: 'Senha incorreta'});
         }
-        if (!user.isActive) {
+        if (!user.status) {
             return done(null, false, { error: 401, message: 'Conta inativa. Verifique seu e-mail'})
         }
         return done(null, user, { message: 'Login realizado com sucesso' });
