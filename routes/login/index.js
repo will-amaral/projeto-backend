@@ -25,4 +25,4 @@ router.post(
   LoginController.index
 );
 
-module.exports = { router };
+module.exports = router;

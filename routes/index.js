@@ -5,5 +5,6 @@
  */
 const user = require('./user');
 const login = require('./login');
+const admin = require('./admin');
 
-module.exports = { user, login };
+module.exports = { user, login, admin };

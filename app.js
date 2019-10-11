@@ -10,7 +10,7 @@ const express = require('express');
 const passport = require('passport');
 const cors = require('cors');
 const app = express();
-const { user, login } = require('./routes');
+const { user, login, admin } = require('./routes');
 require('./config/auth');
 /** Configuração do banco de dados utilizando o ORM mongoose */
 const dbUrl = process.env.DB_URL;
@@ -26,8 +26,9 @@ app.use(cors());
 /** Definição de rotas. As rotas seguras devem ser definidas com parâmetro adicional
  * de autenticação
  */
-app.use('/', login.router);
+app.use('/', login);
 app.use('/', user.router);
+app.use('/admin', passport.authenticate('jwt', { session: false }), admin);
 app.use(
   '/user',
   passport.authenticate('jwt', { session: false }),
