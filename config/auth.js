@@ -48,6 +48,7 @@ passport.use(
         role,
         specialty
       } = req.body;
+      const { filename } = req.file;
       let User;
       switch (level) {
         case 'Admin':
@@ -70,11 +71,12 @@ passport.use(
           birthDate,
           phone,
           gender,
-          financial,
+          financial: financial && JSON.parse(financial),
           role,
-          specialty
+          specialty,
+          thumbnail: `http://localhost:4000/uploads/${filename}`
         });
-        await sendMail(user, email, false);
+        //Descomentar quando resolver domínio await sendMail(user, email, false);
         return done(null, user);
       } catch (error) {
         done(error);

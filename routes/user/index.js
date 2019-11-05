@@ -2,19 +2,23 @@
  * Primeiramente importamos o roteador do express e o definimos em duas instâncias
  * separadas, para rotas públicas e privadas. Utilizamos também o pacote express-validator
  * para validar os dados antes de serem passados ao banco de dados.
- *  Duas funções auxiliares são importados do objeto helper.
+ * Duas funções auxiliares são importados do objeto helper.
  */
 const router = require('express').Router();
+const multer = require('multer');
 const secureRouter = require('express').Router();
 const { check } = require('express-validator');
 const UserController = require('../../controllers/UserController');
 const { validateErrors, cpfValidate } = require('../helper');
+const uploadConfig = require('../../config/upload');
+const upload = multer(uploadConfig);
 /**
  * A primeira rota a ser declara é a de cadastro. A requisição é do tipo POST, e recebe
  * como parâmetro um array com as validações, tratamento de erros, e o controlador.
  */
 router.post(
   '/signup',
+  upload.single('thumbnail'),
   [
     check('email')
       .isEmail()

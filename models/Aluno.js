@@ -11,26 +11,32 @@ const User = require('./User');
  * do nível Aluno. O valor definido em amount utiliza getters
  * e setters para formatar o número.
  */
-const financialSchema = new Schema({
-  dueDay: {
-    type: Number,
-    min: 1,
-    max: 31
-  },
-  plan: {
-    type: String,
-    enum: ['Mensal', 'Semestral', 'Anual']
-  },
-  amount: {
-    type: Number,
-    set: function(num) {
-      return num * 100;
+const financialSchema = new Schema(
+  {
+    dueDay: {
+      type: Number,
+      min: 1,
+      max: 31
     },
-    get: function(num) {
-      return (num / 100).toFixed(2);
+    plan: {
+      type: String,
+      enum: ['Mensal', 'Semestral', 'Anual']
+    },
+    amount: {
+      type: Number,
+      set: function(num) {
+        return num * 100;
+      },
+      get: function(num) {
+        return (num / 100).toFixed(2);
+      }
     }
+  },
+  {
+    toJSON: { getters: true },
+    toObject: { getters: true }
   }
-});
+);
 
 /**
  * Usamos a função "discriminator" do model User,

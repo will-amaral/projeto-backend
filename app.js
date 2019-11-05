@@ -29,11 +29,8 @@ app.use(cors());
 app.use('/', login);
 app.use('/', user.router);
 app.use('/admin', passport.authenticate('jwt', { session: false }), admin);
-app.use(
-  '/user',
-  passport.authenticate('jwt', { session: false }),
-  user.secureRouter
-);
+app.use('/user', passport.authenticate('jwt', { session: false }), user.secureRouter);
+app.use(express.static('public'));
 /** Inicializar o servidor. */
 
 app.listen(4000, () => {

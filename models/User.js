@@ -57,7 +57,8 @@ const userSchema = new Schema(
     gender: {
       type: String,
       enum: ['M', 'F', 'NB', 'Outro']
-    }
+    },
+    thumbnail: String
   },
   options
 );
