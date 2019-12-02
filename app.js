@@ -14,7 +14,11 @@ const { user, login, admin } = require('./routes');
 require('./config/auth');
 /** Configuração do banco de dados utilizando o ORM mongoose */
 const dbUrl = process.env.DB_URL;
-mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erro de conexão mongodb: '));
 db.once('open', () => console.log('📂 Conectado ao banco!'));

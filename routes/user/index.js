@@ -50,4 +50,6 @@ router.post(
  */
 secureRouter.get('/profile', UserController.read);
 
+secureRouter.delete('/delete', UserController.delete);
+
 module.exports = { router, secureRouter };

@@ -11,10 +11,7 @@ const User = require('../models/User');
  * de cadastro que foi definida pelo passport nas configurações.
  */
 exports.create = function(req, res, next) {
-  passport.authenticate('signup', { session: false }, async function(
-    error,
-    user
-  ) {
+  passport.authenticate('signup', { session: false }, async function(error, user) {
     if (error) {
       if (error.code == 11000) {
         res.status(400).json({
@@ -52,5 +49,32 @@ exports.read = async (req, res, next) => {
     });
   }
   res.json({ profile });
+  next();
+};
+
+exports.update = async (req, res, next) => {
+  const {
+    user: { _id }
+  } = req;
+  console.log(_id);
+  let profile = await User.findOne({ _id });
+  if (!profile) {
+    return res.status(400).json({
+      message: 'Usuário não encontrado'
+    });
+  }
+};
+
+exports.delete = async (req, res, next) => {
+  const { _id } = req.body;
+  console.log(_id);
+  let profile = await User.findOne({ _id });
+  if (!profile) {
+    return res.status(400).json({
+      message: 'Usuário não encontrado'
+    });
+  }
+  await User.deleteOne({ _id });
+  res.json({ message: 'O usuário foi deletado', _id });
   next();
 };
